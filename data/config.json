@@ -1,0 +1,34 @@
+{
+  "network": {
+    "interface": "eth0",
+    "server_ip": "192.168.1.10"
+  },
+  "timeouts": {
+    "iso_selector_seconds": 5,
+    "script_selector_seconds": 10
+  },
+  "profiles": [
+    {
+      "id": "ubuntu_lts_24",
+      "profile_name": "Ubuntu-24.04-LTS",
+      "iso_filename": "ubuntu-24.04-lts.iso",
+      "script_filename": "preseed.cfg"
+    },
+    {
+      "id": "win11_manual",
+      "profile_name": "Windows 11",
+      "iso_filename": "windows11-25h2.iso",
+      "script_filename": "none"
+    }
+  ],
+  "hardware_rules": [
+    {
+      "mac_address": "00:1A:2B:3C:4D:5E",
+      "assigned_profile_id": "ubuntu_lts_24"
+    },
+    {
+      "mac_address": "00:8B:4F:11:AA:CC",
+      "assigned_profile_id": "win11_manual"
+    }
+  ]
+}

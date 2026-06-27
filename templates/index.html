@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VenPXE - Dashboard Overview</title>
+    <title>VenPXE - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class' };
@@ -17,47 +17,38 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-zinc-900 dark:text-zinc-100 min-h-screen font-sans transition-colors duration-200">
 
-    <!-- App Container -->
     <div class="flex flex-col md:flex-row min-h-screen">
-        
-        <!-- Sidebar Navigation -->
         <aside class="w-full md:w-64 bg-white dark:bg-zinc-800 border-b md:border-b-0 md:border-r border-slate-200 dark:border-zinc-700 p-6 flex flex-col justify-between sticky top-0 z-50 md:h-screen">
             <div>
                 <div class="flex items-center justify-between mb-8">
                     <div class="flex items-center space-x-3">
-                        <span class="text-2xl">🚀</span>
-                        <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300">VenPXE Engine</h1>
+                        <span class="text-2xl">🌐</span>
+                        <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300">VenPXE</h1>
                     </div>
-                    <!-- Theme Toggle -->
                     <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-zinc-700 hover:ring-2 ring-blue-500 transition-all text-xl" title="Toggle Theme">🌓</button>
                 </div>
                 <nav class="space-y-1">
-                    <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 font-medium"><span>📊</span> <span>Overview</span></a>
-                    <a href="configurations.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>⚙️</span> <span>Configurations</span></a>
-                    <a href="management.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎛️</span> <span>Asset Switchboard</span></a>
-                    <a href="filters.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎯</span> <span>Destination Matrix</span></a>
-                    <a href="info.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>📖</span> <span>Project Manifest</span></a>
+                    <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 font-medium"><span>📊</span> <span>System</span></a>
+                    <a href="configurations.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>⚙️</span> <span>Configuration</span></a>
+                    <a href="management.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎛️</span> <span>ISO management</span></a>
+                    <a href="filters.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎯</span> <span>Automated Filters</span></a>
+                    <a href="info.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>📖</span> <span>Info</span></a>
                 </nav>
             </div>
             <div class="pt-4 border-t border-slate-200 dark:border-zinc-700 text-xs text-slate-400 mt-4 md:mt-0">
-                VenPXE Core v2.0.0 · Open Source
+                VenPXE v0.1.0 · Open Source
             </div>
         </aside>
 
-        <!-- Main Workspace -->
         <main class="flex-1 p-6 lg:p-10 max-w-7xl w-full mx-auto">
             <header class="mb-8">
-                <h2 class="text-3xl font-bold tracking-tight">System Status Overview</h2>
-                <p class="text-slate-500 dark:text-zinc-400 mt-1">Real-time telemetry and network deployment tracking.</p>
+                <h2 class="text-3xl font-bold tracking-tight">System Status</h2>
             </header>
 
-            <!-- Server Health Grid -->
             <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                <!-- CPU Indicator -->
                 <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-zinc-700/60">
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">CPU Utilization</span>
-                        <span class="text-xs bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 px-2 py-1 rounded-full font-medium">Healthy</span>
+                        <span class="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">CPU Usage</span>
                     </div>
                     <div class="flex items-baseline space-x-2">
                         <span class="text-4xl font-extrabold tracking-tight">24%</span>
@@ -68,11 +59,9 @@
                     </div>
                 </div>
 
-                <!-- RAM Indicator -->
                 <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-zinc-700/60">
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">Memory Buffer</span>
-                        <span class="text-xs bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 px-2 py-1 rounded-full font-medium">Healthy</span>
+                        <span class="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">RAM Usage</span>
                     </div>
                     <div class="flex items-baseline space-x-2">
                         <span class="text-4xl font-extrabold tracking-tight">4.2<span class="text-lg font-normal text-slate-400">/16 GB</span></span>
@@ -82,11 +71,9 @@
                     </div>
                 </div>
 
-                <!-- Storage Indicator -->
                 <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-zinc-700/60">
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">Local Image Vault</span>
-                        <span class="text-xs bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 px-2 py-1 rounded-full font-medium">Filling Up</span>
+                        <span class="text-sm font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">Storage Usage</span>
                     </div>
                     <div class="flex items-baseline space-x-2">
                         <span class="text-4xl font-extrabold tracking-tight">72%</span>
@@ -98,13 +85,12 @@
                 </div>
             </section>
 
-            <!-- Active Connected Clients -->
             <section class="bg-white dark:bg-zinc-800 rounded-2xl shadow-sm border border-slate-200/60 dark:border-zinc-700/60 overflow-hidden">
                 <div class="p-6 border-b border-slate-100 dark:border-zinc-700 flex justify-between items-center">
-                    <h3 class="text-lg font-bold">Active Live Network Leases</h3>
+                    <h3 class="text-lg font-bold">Active Sessions</h3>
                     <span class="flex items-center space-x-2 text-sm text-blue-600 dark:text-blue-400 font-medium">
                         <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                        <span>3 Engines Streaming</span>
+                        <span>3 Puters Connected</span>
                     </span>
                 </div>
                 <div class="overflow-x-auto">
@@ -112,10 +98,10 @@
                         <thead>
                             <tr class="bg-slate-50/70 dark:bg-zinc-800/50 text-slate-400 uppercase text-xs font-semibold tracking-wider border-b border-slate-100 dark:border-zinc-700">
                                 <th class="p-4 pl-6">MAC Address</th>
-                                <th class="p-4">Assigned IP</th>
-                                <th class="p-4">Boot Blueprint Target</th>
-                                <th class="p-4">Deployment Status</th>
-                                <th class="p-4 pr-6">Last Check-In</th>
+                                <th class="p-4">IP Adress</th>
+                                <th class="p-4">Selected ISO</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4 pr-6">Last Connection</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 dark:divide-zinc-700/60">
@@ -168,7 +154,6 @@
         </main>
     </div>
 
-    <!-- Layout & Theme Logic Shared Across Framework -->
     <script>
         const btn = document.getElementById('themeToggle');
         btn.addEventListener('click', () => {
