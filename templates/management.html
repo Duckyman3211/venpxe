@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VenPXE - Asset Switchboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+        const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+        if (getCookie('theme') === 'dark') { document.documentElement.classList.add('dark'); }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-zinc-900 dark:text-zinc-100 min-h-screen font-sans transition-colors duration-200">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 bg-white dark:bg-zinc-800 border-b md:border-b-0 md:border-r border-slate-200 dark:border-zinc-700 p-6 flex flex-col justify-between sticky top-0 z-50 md:h-screen">
+            <div>
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🚀</span>
+                        <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300">VenPXE Engine</h1>
+                    </div>
+                    <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-zinc-700 hover:ring-2 ring-blue-500 transition-all text-xl">🌓</button>
+                </div>
+                <nav class="space-y-1">
+                    <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>📊</span> <span>Overview</span></a>
+                    <a href="configurations.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>⚙️</span> <span>Configurations</span></a>
+                    <a href="management.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 font-medium"><span>🎛️</span> <span>Asset Switchboard</span></a>
+                    <a href="filters.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎯</span> <span>Destination Matrix</span></a>
+                    <a href="info.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>📖</span> <span>Project Manifest</span></a>
+                </nav>
+            </div>
+            <div class="pt-4 border-t border-slate-200 dark:border-zinc-700 text-xs text-slate-400 mt-4 md:mt-0">VenPXE Core v2.0.0</div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="flex-1 p-6 lg:p-10 max-w-7xl w-full mx-auto">
+            <header class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight">Asset Vault Switchboard</h2>
+                    <p class="text-slate-500 dark:text-zinc-400 mt-1">Manage bootable payloads, mapping matrices, and system installation logic hooks.</p>
+                </div>
+                <button onclick="console.log('[Switchboard Engine] Rescanning directories...'); alert('Storage index maps updated successfully!');" class="px-4 py-2.5 bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-zinc-700 text-sm font-semibold flex items-center space-x-2 transition">
+                    <span>🔄</span> <span>Refresh Folder Scans</span>
+                </button>
+            </header>
+
+            <!-- Dual Storage Allocation Split Card Panel -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                <!-- Local ISO Block System -->
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl border border-slate-200/60 dark:border-zinc-700/60 shadow-sm">
+                    <h3 class="text-lg font-bold mb-2 flex items-center justify-between">
+                        <span class="flex items-center space-x-2">💿 <span>Kernel OS Images Inventory (`/isos/`)</span></span>
+                        <span class="text-xs text-slate-400 font-mono">3 Items Tracked</span>
+                    </h3>
+                    <div class="space-y-2 mt-4 max-h-48 overflow-y-auto pr-2">
+                        <div class="p-3 bg-slate-50 dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-xl flex justify-between items-center text-sm font-mono">
+                            <span>ubuntu-24.04-live-server.iso</span> <span class="text-xs text-slate-400">2.4 GB</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-xl flex justify-between items-center text-sm font-mono">
+                            <span>win11-enterprise-23h2.iso</span> <span class="text-xs text-slate-400">6.1 GB</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-xl flex justify-between items-center text-sm font-mono">
+                            <span>proxmox-ve-8.1.iso</span> <span class="text-xs text-slate-400">1.2 GB</span>
+                        </div>
+                    </div>
+                    <!-- Upload Box Component -->
+                    <div class="mt-6 border-2 border-dashed border-slate-200 dark:border-zinc-700 rounded-xl p-6 text-center hover:bg-slate-50/50 dark:hover:bg-zinc-900/50 transition cursor-pointer" onclick="console.log('[Upload Hook] Triggering native element binder...');">
+                        <span class="text-2xl block mb-2">📥</span>
+                        <p class="text-xs font-medium text-slate-500 dark:text-zinc-400">Drop raw installation `.iso` structures here or click to scan local file blocks.</p>
+                    </div>
+                </div>
+
+                <!-- Automation Cloud Layer Sheets -->
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl border border-slate-200/60 dark:border-zinc-700/60 shadow-sm">
+                    <h3 class="text-lg font-bold mb-2 flex items-center justify-between">
+                        <span class="flex items-center space-x-2">📜 <span>Automation Sheets Inventory (`/scripts/`)</span></span>
+                        <span class="text-xs text-slate-400 font-mono">3 Rules Loaded</span>
+                    </h3>
+                    <div class="space-y-2 mt-4 max-h-48 overflow-y-auto pr-2">
+                        <div class="p-3 bg-slate-50 dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-xl flex justify-between items-center text-sm font-mono">
+                            <span>ubuntu_autoinstall_cloudinit.yaml</span> <span class="text-xs text-slate-400">14 KB</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-xl flex justify-between items-center text-sm font-mono">
+                            <span>windows_unattended_provision.xml</span> <span class="text-xs text-slate-400">42 KB</span>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-xl flex justify-between items-center text-sm font-mono">
+                            <span>pve_cluster_jointrigger.sh</span> <span class="text-xs text-slate-400">8 KB</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 border-2 border-dashed border-slate-200 dark:border-zinc-700 rounded-xl p-6 text-center hover:bg-slate-50/50 dark:hover:bg-zinc-900/50 transition cursor-pointer">
+                        <span class="text-2xl block mb-2">⚡</span>
+                        <p class="text-xs font-medium text-slate-500 dark:text-zinc-400">Append Cloud-Init configs, `.xml` Answer scripts, or custom asset hooks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relationship Blueprint Builder Mapping Area -->
+            <section class="bg-white dark:bg-zinc-800 p-6 rounded-2xl border border-slate-200/60 dark:border-zinc-700/60 shadow-sm">
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold">Deployable Blueprint Fusion Module</h3>
+                    <p class="text-sm text-slate-400">Fuse a raw image payload with an orchestration automated sheet tracking template to forge a master blueprint.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Target OS Platform Image</label>
+                        <select id="isoSelect" class="w-full bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono">
+                            <option>ubuntu-24.04-live-server.iso</option>
+                            <option>win11-enterprise-23h2.iso</option>
+                            <option>proxmox-ve-8.1.iso</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Assigned Orchestration Sheet</label>
+                        <select id="scriptSelect" class="w-full bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono">
+                            <option>ubuntu_autoinstall_cloudinit.yaml</option>
+                            <option>windows_unattended_provision.xml</option>
+                            <option>pve_cluster_jointrigger.sh</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Unique Core Profile Tag Name</label>
+                        <input type="text" id="profileName" placeholder="e.g., Ubuntu-Prod-Cluster Node" class="w-full bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono">
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button id="fuseBtn" class="w-full sm:w-auto px-6 py-3 bg-slate-900 hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500 text-white rounded-xl text-sm font-semibold shadow transition">
+                        Compile Structural Deployment Blueprint
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const btn = document.getElementById('themeToggle');
+        btn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            document.cookie = `theme=${isDark ? 'dark' : 'light'}; path=/; max-age=31536000`;
+        });
+
+        document.getElementById('fuseBtn').addEventListener('click', () => {
+            const iso = document.getElementById('isoSelect').value;
+            const script = document.getElementById('scriptSelect').value;
+            const name = document.getElementById('profileName').value;
+            if(!name) { alert('Please supply a verifiable identity profile tag.'); return; }
+            console.log(`[Blueprint Compiler Engine Saved Master Matrix Target: "${name}"] -> Linked Image: ${iso} paired to Optimization script execution block: ${script}`);
+            alert(`Deployment blueprint Matrix entry [${name}] successfully cached within deployment manifest list!`);
+        });
+    </script>
+</body>
+</html>

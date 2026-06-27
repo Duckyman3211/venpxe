@@ -1,0 +1,25 @@
+#!ipxe
+
+echo ====================================================
+echo ✨ VenPXE Hardware Boot Engine - Initializing...
+echo ====================================================
+
+:start_dhcp
+echo 🔍 Looking for wired network link (DHCP)...
+dhcp net0 && goto handoff || goto no_network
+
+:handoff
+echo 🚀 Found network configuration! 
+echo 📡 Server IP detected: ${next-server}
+echo 🔄 Transferring control to iventoy menu...
+chain http://${next-server}:8080/boot.ipxe || chain tftp://${next-server}/boot.ipxe || goto shell
+
+:no_network
+echo ❌ No active wired link detected.
+echo 💡 (Later, our Wi-Fi TUI setup screen will load right here!)
+echo ====================================================
+goto shell
+
+:shell
+echo 💻 Dropping to iPXE Recovery Command Shell.
+shell

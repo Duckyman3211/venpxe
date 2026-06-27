@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VenPXE - Project Manifest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+        const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+        if (getCookie('theme') === 'dark') { document.documentElement.classList.add('dark'); }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-zinc-900 dark:text-zinc-100 min-h-screen font-sans transition-colors duration-200">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 bg-white dark:bg-zinc-800 border-b md:border-b-0 md:border-r border-slate-200 dark:border-zinc-700 p-6 flex flex-col justify-between sticky top-0 z-50 md:h-screen">
+            <div>
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🚀</span>
+                        <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300">VenPXE Engine</h1>
+                    </div>
+                    <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-zinc-700 hover:ring-2 ring-blue-500 transition-all text-xl">🌓</button>
+                </div>
+                <nav class="space-y-1">
+                    <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>📊</span> <span>Overview</span></a>
+                    <a href="configurations.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>⚙️</span> <span>Configurations</span></a>
+                    <a href="management.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎛️</span> <span>Asset Switchboard</span></a>
+                    <a href="filters.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎯</span> <span>Destination Matrix</span></a>
+                    <a href="info.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 font-medium"><span>📖</span> <span>Project Manifest</span></a>
+                </nav>
+            </div>
+            <div class="pt-4 border-t border-slate-200 dark:border-zinc-700 text-xs text-slate-400 mt-4 md:mt-0">VenPXE Core v2.0.0</div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="flex-1 p-6 lg:p-10 max-w-4xl w-full mx-auto">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold tracking-tight">The VenPXE Engine Open Manifesto</h2>
+                <p class="text-slate-500 dark:text-zinc-400 mt-1">Open-Source high-velocity network instantiation baremetal pipeline layer.</p>
+            </header>
+
+            <!-- Philosophical Narrative Layout block -->
+            <article class="bg-white dark:bg-zinc-800 p-6 rounded-2xl border border-slate-200/60 dark:border-zinc-700/60 shadow-sm space-y-4 leading-relaxed mb-8">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Core Vision Statement</h3>
+                <p>VenPXE was conceptualized out of frustration with clunky, corporate network provisioning platforms that impose hidden subscription gates, tracking frameworks, and require heavy enterprise relational database footprints.</p>
+                <p>By compiling dynamic configuration routing structures straight out of memory directly down through the low-level iPXE script interface layer, VenPXE allows thousands of complex data systems to configure them silently, efficiently, and with zero configuration assumptions.</p>
+                <div class="p-4 bg-slate-50 dark:bg-zinc-900 rounded-xl border-l-4 border-blue-500 text-sm font-medium text-slate-500 dark:text-zinc-400">
+                    VenPXE is free software released under the transparent terms of the MIT License model. Modify, break, distribute, and enhance it endlessly.
+                </div>
+            </article>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Repository Documentation Gate -->
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl border border-slate-200/60 dark:border-zinc-700/60 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-base mb-2">Development Repositories & Docs</h4>
+                        <p class="text-sm text-slate-400 mb-6">Gain access to implementation schemas, compile hooks, raw upstream APIs, and step-by-step guides.</p>
+                    </div>
+                    <a href="https://github.com" target="_blank" class="w-full text-center px-4 py-3 bg-slate-100 dark:bg-zinc-700 hover:bg-slate-200 dark:hover:bg-zinc-600 rounded-xl font-semibold text-sm transition">
+                        Browse Source Code Git repositories 🔗
+                    </a>
+                </div>
+
+                <!-- Commercial Ecosystem Support Panel -->
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-6 rounded-2xl shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-bold text-base">VenPXE Commercial Appliance Core</h4>
+                            <span class="bg-white/20 text-xs px-2 py-0.5 rounded-full font-bold uppercase tracking-wide">Hardware</span>
+                        </div>
+                        <p class="text-sm text-blue-100 mb-6">Skip server provisioning entirely with premium, industrial-grade micro-appliances preloaded with standalone VenPXE master layers.</p>
+                    </div>
+                    <!-- Mock Interactive Monetization System Trigger -->
+                    <button onclick="alert('Redirecting execution loop to secure fulfillment checkout funnel...');" class="w-full text-center px-4 py-3 bg-white text-blue-700 font-bold rounded-xl text-sm hover:bg-blue-50 shadow transition">
+                        Inspect Physical Boot Modules ($189) 🛒
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const btn = document.getElementById('themeToggle');
+        btn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            document.cookie = `theme=${isDark ? 'dark' : 'light'}; path=/; max-age=31536000`;
+        });
+    </script>
+</body>
+</html>

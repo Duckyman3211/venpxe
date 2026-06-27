@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VenPXE - System Configurations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+        const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+        if (getCookie('theme') === 'dark') { document.documentElement.classList.add('dark'); }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-zinc-900 dark:text-zinc-100 min-h-screen font-sans transition-colors duration-200">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 bg-white dark:bg-zinc-800 border-b md:border-b-0 md:border-r border-slate-200 dark:border-zinc-700 p-6 flex flex-col justify-between sticky top-0 z-50 md:h-screen">
+            <div>
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🚀</span>
+                        <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300">VenPXE Engine</h1>
+                    </div>
+                    <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-zinc-700 hover:ring-2 ring-blue-500 transition-all text-xl">🌓</button>
+                </div>
+                <nav class="space-y-1">
+                    <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>📊</span> <span>Overview</span></a>
+                    <a href="configurations.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 font-medium"><span>⚙️</span> <span>Configurations</span></a>
+                    <a href="management.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎛️</span> <span>Asset Switchboard</span></a>
+                    <a href="filters.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>🎯</span> <span>Destination Matrix</span></a>
+                    <a href="info.html" class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-700/50 text-slate-600 dark:text-zinc-400 transition"><span>📖</span> <span>Project Manifest</span></a>
+                </nav>
+            </div>
+            <div class="pt-4 border-t border-slate-200 dark:border-zinc-700 text-xs text-slate-400 mt-4 md:mt-0">VenPXE Core v2.0.0</div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="flex-1 p-6 lg:p-10 max-w-4xl w-full mx-auto">
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold tracking-tight">System Control Matrix</h2>
+                <p class="text-slate-500 dark:text-zinc-400 mt-1">Configure kernel listeners, NIC associations, and boot timeout configurations.</p>
+            </header>
+
+            <form id="configForm" class="space-y-6" onsubmit="event.preventDefault();">
+                <!-- Network Setup Section -->
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-zinc-700/60">
+                    <h3 class="text-lg font-bold mb-4 flex items-center space-x-2"><span>🌐</span> <span>Kernel Network Interface Layer</span></h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-500 dark:text-zinc-400 mb-2">Active Host Ethernet Adapter</label>
+                            <select id="adapterSelect" class="w-full bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-xl px-4 py-3 font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="eth0">eth0 (Primary Gigabit Copper - 192.168.1.10)</option>
+                                <option value="eth1">eth1 (Secondary Fiber Link - 10.0.0.5)</option>
+                                <option value="wlan0">wlan0 (Wireless Diagnostic Interface)</option>
+                                <option value="lo">lo (Local Loopback Tester)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-500 dark:text-zinc-400 mb-2">Server IP Binding Target</label>
+                            <input type="text" id="ipBinding" value="192.168.1.10" class="w-full bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-xl px-4 py-3 font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeout Calibration Section -->
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-zinc-700/60">
+                    <h3 class="text-lg font-bold mb-2 flex items-center space-x-2"><span>⏱️</span> <span>iPXE Core Timeout Calibration</span></h3>
+                    <p class="text-sm text-slate-400 mb-6">Fine-tune automated fallbacks for silent hardware loops.</p>
+                    
+                    <div class="space-y-6">
+                        <!-- Primary ISO Timeout -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <label class="font-medium text-slate-600 dark:text-zinc-400">First Timeout: Main iPXE Target Selector</label>
+                                <span class="font-mono text-blue-500 font-bold" id="isoVal">5s</span>
+                            </div>
+                            <input type="range" id="isoTimeout" min="0" max="30" value="5" class="w-full h-2 bg-slate-100 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
+                            <p class="text-xs text-slate-400 mt-1">Countdown period before auto-executing default system image deployment profile.</p>
+                        </div>
+
+                        <!-- Optimization Script Timeout -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <label class="font-medium text-slate-600 dark:text-zinc-400">Second Timeout: Script Template Auto-Inversion</label>
+                                <span class="font-mono text-indigo-500 font-bold" id="scriptVal">10s</span>
+                            </div>
+                            <input type="range" id="scriptTimeout" min="0" max="60" value="10" class="w-full h-2 bg-slate-100 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                            <p class="text-xs text-slate-400 mt-1">Delay parameter prior to loading base unattended automation provisioning matrices.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="flex justify-end space-x-4">
+                    <button type="button" class="px-6 py-3 rounded-xl bg-slate-200 dark:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-600 transition font-medium text-sm">Discard Anomalies</button>
+                    <button type="button" id="saveBtn" class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/10 hover:opacity-90 transition font-medium text-sm">Save Engine Settings</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        // Theme Toggle Ticker
+        const btn = document.getElementById('themeToggle');
+        btn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            document.cookie = `theme=${isDark ? 'dark' : 'light'}; path=/; max-age=31536000`;
+        });
+
+        // Interactive Sliders Update Output UI
+        const t1 = document.getElementById('isoTimeout');
+        const v1 = document.getElementById('isoVal');
+        t1.addEventListener('input', () => v1.textContent = `${t1.value}s`);
+
+        const t2 = document.getElementById('scriptTimeout');
+        const v2 = document.getElementById('scriptVal');
+        t2.addEventListener('input', () => v2.textContent = `${t2.value}s`);
+
+        // Form Submission Intercept Log
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            console.log('[VenPXE Configuration Save Dispatcher]');
+            console.log(`- Selected Adapter: ${document.getElementById('adapterSelect').value}`);
+            console.log(`- Binding IP Target: ${document.getElementById('ipBinding').value}`);
+            console.log(`- Active Selector Delay: ${t1.value} seconds`);
+            console.log(`- Post-Automation Script Delay: ${t2.value} seconds`);
+            alert('VenPXE parameters stored into host memory storage pipeline!');
+        });
+    </script>
+</body>
+</html>
